@@ -40,9 +40,9 @@ class WeekCont extends React.Component {
             <div className="container">
                 <h1 className="header">5-Day Forecast.</h1>
                 <h5 >London,UK</h5>
-                <div className="row justify-content-center"></div>
+                <div></div>
                 <React.Fragment>
-                    <div className="form-check form-check-inline">
+                    <div>
                         <input
                             className="form-check-input"
                             type="radio"
@@ -52,11 +52,10 @@ class WeekCont extends React.Component {
                             // checked={this.state.degreeType}
                             onChange={this.updateForecastDegree.bind(this)}
                         />
-                        <label className="form-check-label" for="celsius">Celsius</label>
+                        <label  htmlFor="celsius">Celsius</label>
                     </div>
-                    <div className="form-check form-check-inline">
+                    <div>
                         <input
-                            className="form-check-input"
                             type="radio"
                             name="degree-type"
                             id="farenheit"
@@ -64,7 +63,7 @@ class WeekCont extends React.Component {
                             // checked={this.state.degreeType}
                             onChange={this.updateForecastDegree.bind(this)}
                         />
-                        <label className="form-check-label" for="farenheit">Farenheit</label>
+                        <label htmlFor="farenheit">Farenheit</label>
                     </div>
                 </React.Fragment>
                 {this.state.dailyData.map((reading, index) => {
@@ -78,22 +77,19 @@ class WeekCont extends React.Component {
                     let DayVal = _Day[newDate.getDay()];
 
                     let dateval = newDate.getFullYear() + "/" + newDate.getMonth() + "/" + newDate.getDate();
-
-
-                    const imgURL = `owf owf-${reading.weather[0].id} owf-5x`;
-
+                    //cel and fahr values declaration
                     const fahrenheit = Math.round(reading.main.temp)
                     const celsius = Math.round((fahrenheit - 32) * 5 / 9)
                     return (
                         <div className="grid-container">
                             <div >
-                                <h3 className="card-title">{DayVal}</h3>
-                                <p className="text-muted">{dateval}</p>
+                                <h3>{DayVal}</h3>
+                                <p>{dateval}</p>
                                 <i className={imgURL}></i>
                                 <h2>{this.state.degreeType === "celsius" ? celsius + "°C" : fahrenheit + "°F"}</h2>
                                 {/* <h2>{Math.round(reading.main.temp)} °F</h2> */}
-                                <div className="card-body">
-                                    <p className="card-text">{reading.weather[0].description}</p>
+                                <div>
+                                    <p>{reading.weather[0].description}</p>
                                 </div>
                             </div>
                         </div>
