@@ -85,7 +85,7 @@ class WeekCont extends React.Component {
                             <div >
                                 <h3>{DayVal}</h3>
                                 <p>{dateval}</p>
-                                <i className={imgURL}></i>
+                                {/* <i className={imgURL}></i> */}
                                 <h2>{this.state.degreeType === "celsius" ? celsius + "°C" : fahrenheit + "°F"}</h2>
                                 {/* <h2>{Math.round(reading.main.temp)} °F</h2> */}
                                 <div>
