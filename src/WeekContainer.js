@@ -4,16 +4,14 @@ import DegreeToggle from './DegreeToggle'
 
 
  class WeekContainer extends Component {
-      constructor(props) {
-          super(props)
-      
-          this.state = {
-               fullData: [],
-               dailyData: [],
-               degreeType: "fahrenheit"
-          }
-      }
-      
+     constructor(props) {
+         super(props)
+         this.state = {
+                fullData: [],
+                dailyData: [],
+                degreeType: "fahrenheit"
+         }
+        }
      componentDidMount(){
         const weatherUrl = fetch("http://api.openweathermap.org/data/2.5/forecast?q=London,uk&units=imperial&APPID=e7aaf1a7e9a51b72659cd7c1d70f6613")
         .then(res =>res.json())
@@ -21,10 +19,11 @@ import DegreeToggle from './DegreeToggle'
             const dailyData = data.list.filter(reading => reading.dt_txt.includes("21:00:00"));
             
             this.setState({
-                fullData: [],
-                dailyData: dailyData
+                fullData: data.list,
+                dailyData: dailyData,
             }, () => console.log(this.state))
-        });  
+        }); 
+         
      }
      //mapping the value"reading" and passing as a prop to dayCard comp to get them as cards
     formatDayCardArr = () => {
@@ -34,18 +33,17 @@ import DegreeToggle from './DegreeToggle'
     updateForecastDegree = (e) => {
         this.setState({
             degreeType: e.target.value
-        }, () => console.log(this.state))
+        }, () => console.log('hi'))
+        debugger;
     }
     render() {
-        
         return (
             <div>
-                <h1 className="header">5-Day Weather Forecast</h1>
+                <h2 className="header">5-Day Weather Forecast</h2>
                 <h5>London,UK</h5>
                <div>
-               <DegreeToggle/>
-                 {this.formatDayCardArr()}
-                 
+               <DegreeToggle updatedegree={this.updateForecastDegree}/>
+                {this.formatDayCardArr()}
                 </div>
             </div>
         )

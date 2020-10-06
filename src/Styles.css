@@ -2,14 +2,17 @@
     display: grid;
     border: 1px solid rgb(4, 12, 4);
   padding: 10px;
-  margin : 30px;        
+  margin : 20px;        
   height: 250px;
   width: 130px;
   float: left;
   margin-left: 10px;
   font-size: 12px;
-  
 }
 .header{
     font-size: 25px;
+    background-color: rgb(236, 231, 231);
+    height: 100px;
+    text-align: center;
+    
 }
